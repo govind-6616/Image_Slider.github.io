@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                overflow: hidden;
+            }
+            #main{
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                background: url(photo.jpg);
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                background-position: center;
+            }
+            #explore{
+                position: absolute;
+                top: 30%;
+                right: 18%;
+                outline: none;
+                border-radius: 30px;
+                width: 12%;
+                padding: 12px;
+                border: 3px solid white;
+                color: white;
+                background: transparent;
+            }
+            #explore:hover{
+                background: #ff3300;
+                transition: 1s;
+            }
+            .sub1{
+                position: absolute;
+                bottom: 10%;
+                right: 5%;
+                height: 134px;
+                width: 582px;
+                background: rgba(255,255,255,0.1);
+                border: 1px solid white;
+                border-radius: 8px;
+            }
+            .sub img{
+                height: 100px;
+                width: 130px;
+                margin-top: 16px;
+                margin-left: 10px;
+                transition: transform 0.5s;
+            }
+            .sheet{
+                position: absolute;
+                border: 1px solid black;
+                top:0;
+                left: 0;
+                width: 50%;
+                height: 100vh;
+                /*background: rgba(86,86,86,0.5);*/
+                   background: rgba(255,255,255,0.5);
+                filter:blur(1px);
+            }
+            .data{
+                width: 400px;
+                position:absolute;
+                left: 15%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .data h1{
+                font-size: 64px;
+                color: white;
+                margin-bottom: 20px;
+                letter-spacing: 10px;
+            }
+            .data p{
+                color: white;
+                letter-spacing: 3px;
+            }
+            input[type=text]{
+                border-radius: 24px;
+                width: 60%;
+                padding: 10px;
+                background: transparent;
+                border: 2px solid white;
+                outline: none;
+                margin: 8% 0% 0% 8%;
+                color: white;
+            }
+            ::placeholder{
+                color: white;
+                letter-spacing: 2px;
+            }
+            .activate{
+                border: 3px solid white;
+                transform: scale(1.03);
+            }
+            .nav{
+                display: block;
+                float: right;
+                box-shadow: 0 3px 2px white;
+                margin: 65px 60px 0px 10px;
+                background: white;
+                border-radius: 28px;
+            }
+            .nav a{
+                text-decoration: none;
+                display: inline-block;
+                font-size: 21px;
+                padding: 6px 20px;
+                color: red;
+                margin: 0px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <!--<img src="photo.jpg">-->
+            <div class="nav">
+                <a href="#">Home</a>
+                   <a href="#">Services</a>
+                      <a href="#">Contact</a>
+                         <a href="#">About</a>
+            </div>
+            <button id="explore">Explore</button>
+            <div class="sheet"></div>
+            <div class="data">
+                <h1>Discover</h1>
+                <p>Discover Yourself in the beauty of nature and feel the power,energy Inside you.</p>
+                <br>
+                <input type="text" placeholder="Write Something....">
+            </div>
+
+            <div class="sub1">
+                <div class="sub">
+                    <img src="photo.jpg" class="bimg activate" >
+                    <img src="photo4.jpg" class="bimg">
+                    <img src="photo3.jpg" class="bimg" onclick="func(this)">
+                    <img src="images/justice.jpg" class="bimg" >
+                </div>
+            </div>
+        </div>
+        <script>
+            var bimg = document.getElementsByClassName('bimg');
+            var main = document.getElementById('main');
+            var background_Images = ["photo.jpg", "photo4.jpg", "photo3.jpg", "images/justice.jpg"];
+
+            bimg[0].onclick = function () {
+                var i = 0;
+                main.style.backgroundImage = 'url(" ' + background_Images[i] + ' " )';
+                for (i = 0; i < 4; i++) {
+                    bimg[i].classList.remove("activate");
+                }
+                this.classList.add("activate");
+
+            };
+            bimg[1].onclick = function () {
+                var i = 1;
+                main.style.backgroundImage = 'url(" ' + background_Images[i] + ' " )';
+//                bimg[i].classList.add("activate");
+//                   bimg[i-1].classList.remove("activate");  this logic only apply on inreasing sequece one by one.use this when there are arrow sliders.
+
+                for (i = 0; i < 4; i++) {
+                    bimg[i].classList.remove("activate");
+                }
+                this.classList.add("activate");
+            };
+//            bimg[2].onclick=function(){ 
+//                let i=2;
+//              main.style.backgroundImage='url(" '+background_Images[i]+' " )';
+//            };
+            function func(x) {
+                var i = 2;
+                main.style.backgroundImage = 'url( " ' + background_Images[i] + ' " )';
+
+            }
+            bimg[3].onclick = function () {
+                let i = 3;
+                main.style.backgroundImage = 'url(" ' + background_Images[i] + ' " )';
+                for (i = 0; i < 4; i++) {
+                    bimg[i].classList.remove("activate");
+                }
+                this.classList.add("activate");
+            };
+        </script>
+
+    </body>
+</html>
